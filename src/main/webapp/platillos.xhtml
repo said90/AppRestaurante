@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./plantilla.xhtml">
+
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Registro de Platillos"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Descripcion:" for="descripcion" />
+                            <p:inputText id="descripcion" value="#{platilloController.platillo.descripcion}" title="Descripcion" />
+                            <p:commandButton value="Registrar" actionListener="#{platilloController.insertarRegistro()}"/>
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+                <p:separator/>
+                <f:view>
+
+
+                    <h:form>
+                        <p:dataTable value="#{platilloController.lstPlatillo}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPlatillo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPlatillo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Descripcion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcion}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
